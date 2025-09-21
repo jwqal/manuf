@@ -73,13 +73,11 @@
 
         @keyframes noise-anim-1 {
             0% { clip-path: inset(10% 0 80% 0); }
-            /* ... more steps ... */
             100% { clip-path: inset(50% 0 30% 0); }
         }
         
         @keyframes noise-anim-2 {
             0% { clip-path: inset(85% 0 5% 0); }
-            /* ... more steps ... */
             100% { clip-path: inset(40% 0 55% 0); }
         }
 
@@ -119,7 +117,7 @@
         .highlight-text {
             background-color: var(--highlight-bg);
             border-left: 2px solid var(--primary-color);
-            padding-left: 4px;
+            padding-left: 8px;
             transition: all 0.3s ease;
         }
         
@@ -141,10 +139,10 @@
 
     </style>
 </head>
-<body class="min-h-screen p-4 sm:p-6 lg:p-8 crt-scanlines">
+<body class="min-h-screen p-2 sm:p-6 lg:p-8 crt-scanlines">
     <!-- LOADER -->
     <div id="loader" class="fixed inset-0 bg-background-color z-50 flex items-center justify-center">
-        <div class="text-center">
+        <div class="text-center p-4">
             <h1 id="loader-text" class="font-display text-2xl sm:text-4xl text-primary-color text-glow"></h1>
             <div class="w-full bg-gray-800 rounded-full h-2.5 mt-4">
                 <div id="loader-bar" class="bg-primary-color h-2.5 rounded-full" style="width: 0%"></div>
@@ -156,107 +154,127 @@
     <div id="main-content" class="opacity-0 transition-opacity duration-1000">
         <header class="text-center mb-8">
             <h1 class="font-display text-4xl sm:text-6xl md:text-7xl text-primary-color text-glow relative inline-block glitch" data-text="SYSTEM COMPROMISED">SYSTEM COMPROMISED</h1>
-            <p class="mt-2 text-lg text-gray-400">// ANALYZING MEDIA COVERAGE OF THE SEPTEMBER 2025 ELECTORAL CONTROVERSY //</p>
+            <p class="mt-2 text-md sm:text-lg text-gray-400">// ANALYZING MEDIA COVERAGE OF THE SEPTEMBER 2025 ELECTORAL CONTROVERSY //</p>
         </header>
 
         <main class="max-w-7xl mx-auto">
             <!-- INTRODUCTION -->
-            <section id="introduction" class="terminal-border p-6 mb-8">
-                <h2 class="font-display text-3xl text-primary-color mb-4">> DECRYPTING TRANSMISSION...</h2>
-                <p class="text-gray-300 leading-relaxed">In September 2025, a political firestorm erupted. The Leader of the Opposition, Rahul Gandhi, alleged systematic "vote chori" (vote theft), targeting the Election Commission of India (ECI). Backed by so-called "100% proof" and threats of a "hydrogen bomb" revelation, this was more than politics—it was a direct assault on the integrity of India's democracy. This event occurred against a backdrop of documented democratic backsliding, with institutions like the ECI accused of weakened autonomy. This file analyzes the media's response, decoding the propaganda hidden in the signal.</p>
+            <section id="introduction" class="terminal-border p-4 sm:p-6 mb-8">
+                <h2 class="font-display text-2xl sm:text-3xl text-primary-color mb-4">> DECRYPTING TRANSMISSION...</h2>
+                <p class="text-gray-300 leading-relaxed text-sm sm:text-base">In September 2025, a political firestorm erupted. The Leader of the Opposition, Rahul Gandhi, alleged systematic "vote chori" (vote theft), targeting the Election Commission of India (ECI). Backed by so-called "100% proof" and threats of a "hydrogen bomb" revelation, this was more than politics, it was a direct assault on the integrity of India's democracy. This event occurred against a backdrop of documented democratic backsliding, with institutions like the ECI accused of weakened autonomy. This file analyzes the media's response, decoding the propaganda hidden in the signal.</p>
             </section>
 
             <!-- PROPAGANDA FILTERS -->
             <section id="filters" class="mb-8">
-                <h2 class="font-display text-3xl text-primary-color text-glow mb-4 text-center">> PROPAGANDA FILTERS [SELECT TO ISOLATE]</h2>
+                <h2 class="font-display text-2xl sm:text-3xl text-primary-color text-glow mb-4 text-center">> PROPAGANDA FILTERS [SELECT TO ISOLATE]</h2>
                 <div class="flex flex-wrap justify-center gap-2 sm:gap-4">
-                    <button class="filter-btn terminal-border px-4 py-2 hover:bg-primary-color hover:text-background-color transition" data-filter="ownership">OWNERSHIP</button>
-                    <button class="filter-btn terminal-border px-4 py-2 hover:bg-primary-color hover:text-background-color transition" data-filter="advertising">ADVERTISING</button>
-                    <button class="filter-btn terminal-border px-4 py-2 hover:bg-primary-color hover:text-background-color transition" data-filter="sourcing">SOURCING</button>
-                    <button class="filter-btn terminal-border px-4 py-2 hover:bg-primary-color hover:text-background-color transition" data-filter="flak">FLAK</button>
-                    <button class="filter-btn terminal-border px-4 py-2 hover:bg-primary-color hover:text-background-color transition" data-filter="ideology">IDEOLOGY</button>
+                    <button class="filter-btn terminal-border px-3 py-1 sm:px-4 sm:py-2 hover:bg-primary-color hover:text-background-color transition" data-filter="ownership">OWNERSHIP</button>
+                    <button class="filter-btn terminal-border px-3 py-1 sm:px-4 sm:py-2 hover:bg-primary-color hover:text-background-color transition" data-filter="advertising">ADVERTISING</button>
+                    <button class="filter-btn terminal-border px-3 py-1 sm:px-4 sm:py-2 hover:bg-primary-color hover:text-background-color transition" data-filter="sourcing">SOURCING</button>
+                    <button class="filter-btn terminal-border px-3 py-1 sm:px-4 sm:py-2 hover:bg-primary-color hover:text-background-color transition" data-filter="flak">FLAK</button>
+                    <button class="filter-btn terminal-border px-3 py-1 sm:px-4 sm:py-2 hover:bg-primary-color hover:text-background-color transition" data-filter="ideology">IDEOLOGY</button>
                 </div>
             </section>
             
             <!-- MEDIA ANALYSIS SECTION -->
             <section class="terminal-border">
                 <div class="flex flex-col md:flex-row">
-                    <!-- TABS FOR MEDIA OUTLETS -->
+                    <!-- TABS FOR MEDIA OUTLETS (Mobile friendly) -->
                     <nav class="w-full md:w-48 border-b md:border-b-0 md:border-r border-primary-color/50 flex-shrink-0">
-                        <ul class="flex md:flex-col">
-                            <li class="flex-1"><button class="terminal-tab w-full font-display text-xl p-4 text-primary-color hover:bg-primary-color/20 active" data-target="toi">The_Times_of_India</button></li>
-                            <li class="flex-1"><button class="terminal-tab w-full font-display text-xl p-4 text-primary-color hover:bg-primary-color/20" data-target="ndtv">NDTV</button></li>
-                            <li class="flex-1"><button class="terminal-tab w-full font-display text-xl p-4 text-primary-color hover:bg-primary-color/20" data-target="the-hindu">The_Hindu</button></li>
-                            <li class="flex-1"><button class="terminal-tab w-full font-display text-xl p-4 text-primary-color hover:bg-primary-color/20" data-target="republic">Republic_TV</button></li>
-                            <li class="flex-1"><button class="terminal-tab w-full font-display text-xl p-4 text-primary-color hover:bg-primary-color/20" data-target="the-wire">The_Wire</button></li>
+                        <ul class="flex flex-wrap justify-center md:flex-col">
+                            <li><button class="terminal-tab w-full font-display text-lg md:text-xl p-3 md:p-4 text-primary-color hover:bg-primary-color/20 active" data-target="toi">The_Times_of_India</button></li>
+                            <li><button class="terminal-tab w-full font-display text-lg md:text-xl p-3 md:p-4 text-primary-color hover:bg-primary-color/20" data-target="ndtv">NDTV</button></li>
+                            <li><button class="terminal-tab w-full font-display text-lg md:text-xl p-3 md:p-4 text-primary-color hover:bg-primary-color/20" data-target="the-hindu">The_Hindu</button></li>
+                            <li><button class="terminal-tab w-full font-display text-lg md:text-xl p-3 md:p-4 text-primary-color hover:bg-primary-color/20" data-target="republic">Republic_TV</button></li>
+                            <li><button class="terminal-tab w-full font-display text-lg md:text-xl p-3 md:p-4 text-primary-color hover:bg-primary-color/20" data-target="the-wire">The_Wire</button></li>
                         </ul>
                     </nav>
                     
                     <!-- CONTENT AREA -->
-                    <div class="p-6 w-full">
+                    <div class="p-4 sm:p-6 w-full text-sm sm:text-base">
                         <!-- The Times of India -->
                         <div id="toi" class="tab-content space-y-4">
-                            <h3 class="font-display text-4xl text-secondary-color text-glow">The Times of India // The Propaganda of Centrism</h3>
-                            <p>TOI frames the institutional challenge as a mere political squabble, minimizing risk and maintaining the status quo.</p>
-                            <div><span data-filter-tag="ownership"><strong>[OWNERSHIP]:</strong> Owned by the Jain family's massive Bennett, Coleman & Co. Ltd. conglomerate, its primary goal is profitability across diverse ventures (real estate, film), not just journalism. This discourages reporting that might antagonize powerful corporate or political actors.</span></div>
-                            <div><span data-filter-tag="advertising"><strong>[ADVERTISING]:</strong> Heavily reliant on corporate and government advertising. The government is a top advertiser, and has historically used ad freezes to punish unfavorable coverage, creating powerful incentives for self-censorship.</span></div>
-                            <div><span data-filter-tag="sourcing"><strong>[SOURCING]:</strong> Employs a "view from nowhere" approach, quoting all official sides (Gandhi, ECI, BJP) to create an impression of balance. This method excludes deeper investigation and marginalizes independent voices and data.</span></div>
-                            <div><span data-filter-tag="flak"><strong>[FLAK]:</strong> Its centrist strategy is designed to avoid commercial and political flak. By framing the story as a "Vote chori row," it trivializes the crisis and avoids alienating any powerful entity, ensuring its own institutional survival.</span></div>
-                            <div><span data-filter-tag="ideology"><strong>[IDEOLOGY]:</strong> A centre-right, pro-business stance that treats politics as a competitive drama. By calling it a "row," it depoliticizes the allegations, steering the public away from the grave implications and towards viewing it as political theater.</span></div>
+                            <h3 class="font-display text-3xl md:text-4xl text-secondary-color text-glow">The Times of India // The Propaganda of Centrism</h3>
+                            <div class="space-y-3">
+                                <h4 class="font-display text-xl text-primary-color">> COVERAGE TACTICS</h4>
+                                <p>TOI's approach was to frame a substantive institutional challenge as a mere political squabble. By labeling the story the "Vote chori row," it trivialized the matter, reducing a potential constitutional crisis to a noisy but inconsequential argument. This neutralized the gravity of the allegations and presented a "safe," balanced view that avoided alienating powerful actors.</p>
+                                <h4 class="font-display text-xl text-primary-color">> FILTER ANALYSIS</h4>
+                                <div><span data-filter-tag="ownership"><strong>[OWNERSHIP]:</strong> As a flagship of the massive Bennett, Coleman & Co. Ltd. (BCCL) conglomerate, journalistic priorities are subordinate to the wider commercial interests of the Jain family, which include real estate and film production. This structure inherently discourages journalism that might antagonize powerful entities and harm the group's bottom line.</span></div>
+                                <div><span data-filter-tag="advertising"><strong>[ADVERTISING]:</strong> Critically dependent on government and corporate advertising. The Modi government has previously frozen ad spending with the group for unfavorable coverage. This financial lever acts as a potent tool for pre-emptive self-censorship, ensuring coverage remains within "safe" boundaries.</span></div>
+                                <div><span data-filter-tag="sourcing"><strong>[SOURCING]:</strong> Practiced classic "he said, she said" journalism, meticulously quoting official spokespersons from all sides (Congress, ECI, BJP). While appearing balanced, this approach systematically excludes and marginalizes alternative voices, like independent data researchers, and avoids any independent investigation into the claims themselves.</span></div>
+                                <div><span data-filter-tag="flak"><strong>[FLAK]:</strong> The paper's entire strategy is designed to minimize commercial and political flak. By presenting a balanced "view from nowhere," it avoids alienating the ruling party, government advertisers, or the opposition, thus managing relationships with power rather than uncovering truth.</span></div>
+                                <div><span data-filter-tag="ideology"><strong>[IDEOLOGY]:</strong> Adheres to a centre-right, pro-business ideology that views politics as a spectator sport. This framing steers the reader away from considering the implications of a compromised electoral process, encouraging them to see the event as just another episode in the ongoing political drama.</span></div>
+                            </div>
                         </div>
 
                         <!-- NDTV -->
                         <div id="ndtv" class="tab-content space-y-4 hidden">
-                            <h3 class="font-display text-4xl text-secondary-color text-glow">NDTV // The Propaganda of Acquiescence</h3>
-                            <p>Post-takeover, NDTV's coverage reflects acquiescence to the establishment, neutralizing the opposition's claims by framing them as political theatrics.</p>
-                            <div><span data-filter-tag="ownership"><strong>[OWNERSHIP]:</strong> The 2022 acquisition by the Adani Group, a conglomerate with close ties to PM Modi, is the single most defining factor. It's structurally implausible for a channel owned by a pro-government entity to engage in adversarial journalism against it.</span></div>
-                            <div><span data-filter-tag="advertising"><strong>[ADVERTISING]:</strong> Previously punished with government ad withdrawals, the Adani takeover ensures a stable flow of revenue from government and aligned corporations, removing financial precarity and encouraging a pro-establishment line.</span></div>
-                            <div><span data-filter-tag="sourcing"><strong>[SOURCING]:</strong> Heavily privileged the official narrative from the ECI and BJP. Gandhi's claims were reported, but framed with diminishing language like "teaser" and "jab," positioning him as a provocateur, not a serious actor.</span></div>
-                            <div><span data-filter-tag="flak"><strong>[FLAK]:</strong> The years of government pressure and raids on the previous owners serve as a powerful cautionary tale. The Adani takeover is a structural solution to flak, aligning the channel's interests with the state to eliminate punitive action.</span></div>
-                            <div><span data-filter-tag="ideology"><strong>[IDEOLOGY]:</strong> Shifted from liberal-centrist to pro-establishment. The controversy was framed as a "meltdown" or a personality clash, delegitimizing the act of questioning powerful institutions as disruptive and destabilizing.</span></div>
+                            <h3 class="font-display text-3xl md:text-4xl text-secondary-color text-glow">NDTV // The Propaganda of Acquiescence</h3>
+                            <div class="space-y-3">
+                                <h4 class="font-display text-xl text-primary-color">> COVERAGE TACTICS</h4>
+                                <p>NDTV's coverage neutralized the opposition's claims by framing them as theatrics. It led with and gave greater weight to official rebuttals. It used diminishing language, referring to the "hydrogen bomb" promise as a "teaser" and allegations as a "jab." This subtly positioned the opposition leader as a performer rather than a serious actor presenting evidence.</p>
+                                <h4 class="font-display text-xl text-primary-color">> FILTER ANALYSIS</h4>
+                                <div><span data-filter-tag="ownership"><strong>[OWNERSHIP]:</strong> The 2022 hostile takeover by the Adani Group, a conglomerate with famously close ties to PM Modi, is the single most determinative factor. The acquisition led to the resignation of prominent critical journalists and created an insurmountable conflict of interest, making adversarial journalism structurally implausible.</span></div>
+                                <div><span data-filter-tag="advertising"><strong>[ADVERTISING]:</strong> After being punished with government ad withdrawals under previous ownership, the Adani takeover secured a stable flow of revenue from the government and its corporate ecosystem. This encourages a staid, pro-establishment line palatable to powerful advertisers.</span></div>
+                                <div><span data-filter-tag="sourcing"><strong>[SOURCING]:</strong> Sourcing heavily privileged the official narrative. While Rahul Gandhi's claims were reported, the core of the story became the political back-and-forth, not the underlying question of electoral integrity. Independent experts who could validate the claims were largely absent.</span></div>
+                                <div><span data-filter-tag="flak"><strong>[FLAK]:</strong> The years of government pressure and CBI raids on the previous owners serve as a potent cautionary tale for remaining journalists. The Adani ownership is a structural solution to flak, aligning the channel's interests with the state and effectively eliminating the threat of punitive action.</span></div>
+                                <div><span data-filter-tag="ideology"><strong>[IDEOLOGY]:</strong> Shifted from a liberal-centrist position to a pro-establishment one. Framing the controversy as a "meltdown" or personality clash ("Rahul Gandhi vs Election Commission") delegitimizes the act of questioning powerful institutions, implying such challenges are disruptive rather than a necessary function of democracy.</span></div>
+                            </div>
                         </div>
 
                         <!-- The Hindu -->
                         <div id="the-hindu" class="tab-content space-y-4 hidden">
-                            <h3 class="font-display text-4xl text-secondary-color text-glow">The Hindu // The Propaganda of Institutionalism</h3>
-                            <p>Characterized by a nuanced, institutionally-focused approach. It used the allegations as a lens to scrutinize systemic flaws in the electoral process.</p>
-                            <div><span data-filter-tag="ownership"><strong>[OWNERSHIP]:</strong> Owned by the Kasturi family trust, it's insulated from purely commercial or political pressures. Its mission is rooted in a 140-year legacy of journalistic credibility, prioritizing reputation over short-term gains.</span></div>
-                            <div><span data-filter-tag="advertising"><strong>[ADVERTISING]:</strong> While reliant on ads, its growing digital subscription base mitigates this dependence, creating accountability to readers who expect in-depth journalism and providing a buffer against government pressure.</span></div>
-                            <div><span data-filter-tag="sourcing"><strong>[SOURCING]:</strong> Went beyond the "he said, she said" dichotomy. It provided detailed accounts of the allegations and actively sought out former Chief Election Commissioners and legal experts for context and independent analysis.</span></div>
-                            <div><span data-filter-tag="flak"><strong>[FLAK]:</strong> Historically a target of flak (like ad freezes), its strong reputation as a credible, legacy institution provides a significant defense against more extreme forms of pressure.</span></div>
-                            <div><span data-filter-tag="ideology"><strong>[IDEOLOGY]:</strong> A centre-left, secular, and constitutionalist worldview. The story was framed as an institutional crisis, not partisan politics. Its editorial called to "Fix the flaws," using the controversy to call for systemic reforms.</span></div>
+                            <h3 class="font-display text-3xl md:text-4xl text-secondary-color text-glow">The Hindu // The Propaganda of Institutionalism</h3>
+                            <div class="space-y-3">
+                                <h4 class="font-display text-xl text-primary-color">> COVERAGE TACTICS</h4>
+                                <p>Treated the allegations with seriousness, using them as a lens to scrutinize systemic flaws. The main editorial, titled "Fix the flaws," acknowledged the evidence "demands careful examination, not wholesale dismissal," but also noted the leap to alleging deliberate fraud remained unsubstantiated. It used the event to call for broader reforms like door-to-door voter verification.</p>
+                                <h4 class="font-display text-xl text-primary-color">> FILTER ANALYSIS</h4>
+                                <div><span data-filter-tag="ownership"><strong>[OWNERSHIP]:</strong> Owned by the Kasturi family trust, it functions with a degree of insulation from the purely commercial and political pressures that drive corporate media. Its 140-year legacy prioritizes journalistic credibility and constitutional values over short-term gains.</span></div>
+                                <div><span data-filter-tag="advertising"><strong>[ADVERTISING]:</strong> While reliant on advertising, it has a growing digital subscription base that creates a dual revenue stream. This mitigates its dependence on government ads and creates direct accountability to its readers, providing a buffer for a more independent editorial stance.</span></div>
+                                <div><span data-filter-tag="sourcing"><strong>[SOURCING]:</strong> Sourcing was notably broader and more substantive. Beyond the official statements, it actively sought out and amplified the voices of former Chief Election Commissioners and legal experts to provide context and independent analysis, valuing expertise over political drama.</span></div>
+                                <div><span data-filter-tag="flak"><strong>[FLAK]:</strong> As an outlet that often takes a critical stance, it has historically been a target of flak, including ad freezes. However, its strong reputation as a credible, legacy institution provides a significant defense against more extreme forms of pressure and lawsuits.</span></div>
+                                <div><span data-filter-tag="ideology"><strong>[IDEOLOGY]:</strong> Its centre-left, secular, and constitutionalist ideology was clear. The coverage was framed not as partisan politics but as an institutional crisis. The paper's commitment is to the democratic process and the institution, not to any single political party.</span></div>
+                            </div>
                         </div>
 
                         <!-- Republic TV -->
                         <div id="republic" class="tab-content space-y-4 hidden">
-                            <h3 class="font-display text-4xl text-secondary-color text-glow">Republic TV // The Propaganda of Nationalism</h3>
-                            <p>Functioned as a propaganda apparatus for the ruling establishment, designed to delegitimize the opposition and reframe dissent as an anti-national act.</p>
-                            <div><span data-filter-tag="ownership"><strong>[OWNERSHIP]:</strong> Majority-owned by its editor-in-chief, Arnab Goswami, and initially funded by investors with direct links to the BJP. Its core business model is not journalism, but ideological advocacy.</span></div>
-                            <div><span data-filter-tag="advertising"><strong>[ADVERTISING]:</strong> Its staunchly pro-government stance makes it a highly attractive platform for government and corporate advertising, creating a self-reinforcing loop where nationalist content drives ratings and revenue.</span></div>
-                            <div><span data-filter-tag="sourcing"><strong>[SOURCING]:</strong> The primary "source" is often Arnab Goswami's own monologues. Opposition figures are not invited to present their views, but to be shouted down and delegitimized in a format that makes reasoned argument impossible.</span></div>
-                            <div><span data-filter-tag="flak"><strong>[FLAK]:</strong> It is a primary *generator* of flak against government opponents. It weaponizes the negative feedback it receives (lawsuits, bans), presenting them as proof of its courage and reinforcing its nationalist narrative.</span></div>
-                            <div><span data-filter-tag="ideology"><strong>[IDEOLOGY]:</strong> An aggressive form of right-wing nationalism that conflates the nation-state with the ruling party. Criticism of the government is treated as sedition. The controversy was presented as a "hoax" and "manufactured outrage."</span></div>
+                            <h3 class="font-display text-3xl md:text-4xl text-secondary-color text-glow">Republic TV // The Propaganda of Nationalism</h3>
+                            <div class="space-y-3">
+                                <h4 class="font-display text-xl text-primary-color">> COVERAGE TACTICS</h4>
+                                <p>Actively functioned as a propaganda apparatus. It framed the allegations as "INDIA Alliance's antics," a "failed PR stunt," and a "hoax." Hashtags like #RahulGandhiExposed were used to create a pre-determined conclusion. Its high-decibel debates practiced "silencing through noise," where opposition figures were invited only to be shouted down and delegitimized.</p>
+                                <h4 class="font-display text-xl text-primary-color">> FILTER ANALYSIS</h4>
+                                <div><span data-filter-tag="ownership"><strong>[OWNERSHIP]:</strong> Majority-owned by editor-in-chief Arnab Goswami and initially funded by investors with direct BJP links. The channel's identity is inextricably linked to Goswami's personal brand of hyper-nationalist journalism. Its core business model is ideological advocacy, not objectivity.</span></div>
+                                <div><span data-filter-tag="advertising"><strong>[ADVERTISING]:</strong> Its staunchly pro-government stance makes it a highly attractive platform for government and corporate advertising, creating a self-reinforcing loop where nationalist content drives ratings, which attracts revenue from powerful actors, further cementing its ideology.</span></div>
+                                <div><span data-filter-tag="sourcing"><strong>[SOURCING]:</strong> The primary "source" is often Arnab Goswami's own monologues. The channel systematically omits any substantive detail of the evidence presented by the opposition, ensuring its audience is shielded from any information that might challenge the pro-government narrative.</span></div>
+                                <div><span data-filter-tag="flak"><strong>[FLAK]:</strong> It is largely immune to government flak; on the contrary, it is a 'primary generator' of flak against anyone perceived as an opponent of the government. It strategically weaponizes lawsuits and bans from opposition parties, presenting them to its audience as a badge of honor and proof of its courage.</span></div>
+                                <div><span data-filter-tag="ideology"><strong>[IDEOLOGY]:</strong> An aggressive form of right-wing nationalism that conflates the nation with the ruling party. Any criticism of the government is treated as an act of sedition. The controversy was framed as an attack on India's integrity by a desperate, anti-national opposition.</span></div>
+                            </div>
                         </div>
 
                         <!-- The Wire -->
                         <div id="the-wire" class="tab-content space-y-4 hidden">
-                             <h3 class="font-display text-4xl text-secondary-color text-glow">The Wire // The Propaganda of Resistance</h3>
-                             <p>Operates outside traditional constraints, functioning as a form of counter-propaganda with a commitment to accountability and amplifying marginalized voices.</p>
-                             <div><span data-filter-tag="ownership"><strong>[OWNERSHIP]:</strong> Owned by the Foundation for Independent Journalism (FIJ), a non-profit run by journalists. It was explicitly created to be independent of the commercial and political pressures that afflict mainstream outlets.</span></div>
-                             <div><span data-filter-tag="advertising"><strong>[ADVERTISING]:</strong> Rejects the ad-driven model. It's funded by grants and reader donations, making its primary accountability to its audience, not advertisers or the government. It's immune to ad-based state control.</span></div>
-                             <div><span data-filter-tag="sourcing"><strong>[SOURCING]:</strong> Actively seeks out voices ignored by the establishment press. It provided a platform for deep dives into the technical details and gave prominence to the work of independent investigative journalists and civil society groups.</span></div>
-                             <div><span data-filter-tag="flak"><strong>[FLAK]:</strong> As a prominent critical voice, it is a constant recipient of severe flak, including defamation and sedition cases from the state. It transforms these attacks into a core part of its brand identity, validating its credentials and driving donations.</span></div>
-                             <div><span data-filter-tag="ideology"><strong>[IDEOLOGY]:</strong> Explicitly anti-establishment and pro-transparency. It framed the controversy as a fundamental threat to democracy, focusing on the ECI's lack of transparency and the broader pattern of institutional decay.</span></div>
+                             <h3 class="font-display text-3xl md:text-4xl text-secondary-color text-glow">The Wire // The Propaganda of Resistance</h3>
+                             <div class="space-y-3">
+                                <h4 class="font-display text-xl text-primary-color">> COVERAGE TACTICS</h4>
+                                <p>The Wire's coverage focused on accountability. Headlines like "Five Shocking Points from Rahul Gandhi's 'Vote Chori' Presser" signaled an intent to inform. A key theme was the ECI's evasiveness, noting that the EC "has not yet fully disproven" the claims. It shifted the burden of proof onto the powerful institution, demanding transparency rather than accepting denials at face value.</p>
+                                <h4 class="font-display text-xl text-primary-color">> FILTER ANALYSIS</h4>
+                                <div><span data-filter-tag="ownership"><strong>[OWNERSHIP]:</strong> Owned by the Foundation for Independent Journalism (FIJ), a non-profit run by senior journalists. It was explicitly created to be independent of the "commercial and political pressures" that afflict mainstream media. Its sole mission is public interest journalism.</span></div>
+                                <div><span data-filter-tag="advertising"><strong>[ADVERTISING]:</strong> By rejecting the advertising-driven model in favor of grants and reader donations, its primary accountability is to its audience, not corporations. It is completely immune to government ad withdrawal as a lever of control, allowing it to pursue critical stories without fear of financial reprisal.</span></div>
+                                <div><span data-filter-tag="sourcing"><strong>[SOURCING]:</strong> In stark contrast to the mainstream, its strategy is to amplify voices ignored by the establishment press. It gave prominence to the work of independent investigative groups like The Reporters' Collective, providing a platform for deep, technical explanations of the findings.</span></div>
+                                <div><span data-filter-tag="flak"><strong>[FLAK]:</strong> It is a primary recipient of severe flak, including a barrage of defamation and sedition cases from the state and its allies. It transforms these attacks into a core part of its brand identity, using them in fundraising appeals to validate its credentials as a fearless, independent watchdog.</span></div>
+                                <div><span data-filter-tag="ideology"><strong>[IDEOLOGY]:</strong> Explicitly anti-establishment, pro-transparency, and rooted in the defense of constitutional values. It framed the controversy not as politics but as a fundamental threat to democracy, focusing on the ECI's lack of transparency and the broader pattern of institutional decay.</span></div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </section>
             
              <!-- CONCLUSION -->
-            <section id="conclusion" class="terminal-border p-6 mt-8">
-                <h2 class="font-display text-3xl text-primary-color mb-4">> FINAL REPORT: SYSTEM ANALYSIS COMPLETE</h2>
-                <p class="text-gray-300 leading-relaxed mb-4">The analysis reveals a deeply polarized media landscape where journalism often gives way to propaganda. The filters of Ownership, Advertising, Sourcing, Flak, and a "Nationalism vs. Anti-nationalism" Ideology systematically shape news to align with elite interests. Mainstream outlets create a spectacle, while independent media face severe threats for holding power to account.</p>
-                <p class="text-red-500 font-bold">> WARNING: This fracturing of the public sphere into separate realities makes democratic consensus impossible. It transforms politics into tribal conflict, undermining the deliberative processes essential for a functioning democracy. The system is under sustained threat.</p>
+            <section id="conclusion" class="terminal-border p-4 sm:p-6 mt-8">
+                <h2 class="font-display text-2xl sm:text-3xl text-primary-color mb-4">> FINAL REPORT: SYSTEM ANALYSIS COMPLETE</h2>
+                <p class="text-gray-300 leading-relaxed mb-4 text-sm sm:text-base">The analysis reveals a deeply polarized media landscape where journalism often gives way to propaganda. The filters of Ownership, Advertising, Sourcing, Flak, and a "Nationalism vs. Anti-nationalism" Ideology systematically shape news to align with elite interests. Mainstream outlets create a spectacle, while independent media face severe threats for holding power to account.</p>
+                <p class="text-red-500 font-bold text-sm sm:text-base">> WARNING: This fracturing of the public sphere into separate realities makes democratic consensus impossible. It transforms politics into conflict, undermining the deliberative processes essential for a functioning democracy. The system is under sustained threat.</p>
             </section>
         </main>
     </div>
@@ -290,7 +308,7 @@
                     loaderBar.style.width = `${progress}%`;
                     
                     currentMessage++;
-                    setTimeout(updateLoader, 2000);
+                    setTimeout(updateLoader, 1800);
                 } else {
                     // Fade out loader, fade in content
                     loader.style.opacity = '0';
@@ -327,21 +345,18 @@
                 btn.addEventListener('click', () => {
                     const filter = btn.getAttribute('data-filter');
 
-                    // If clicking the same filter again, deactivate it
                     if (activeFilter === filter) {
                         document.querySelectorAll('[data-filter-tag]').forEach(el => {
                             el.classList.remove('highlight-text');
                         });
-                        btn.classList.remove('active');
+                        btn.classList.remove('active'); // Also remove active state from button
                         activeFilter = null;
                     } else {
-                        // Deactivate all buttons and highlights first
                         filterBtns.forEach(b => b.classList.remove('active'));
                         document.querySelectorAll('[data-filter-tag]').forEach(el => {
                             el.classList.remove('highlight-text');
                         });
 
-                        // Activate the new filter
                         btn.classList.add('active');
                         activeFilter = filter;
                         document.querySelectorAll(`[data-filter-tag="${filter}"]`).forEach(el => {
@@ -353,4 +368,4 @@
         });
     </script>
 </body>
-      </html>
+</html>
