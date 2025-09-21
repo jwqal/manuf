@@ -1,0 +1,356 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manufacturing Consent: DECLASSIFIED</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=VT323&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #00ffcc;
+            --secondary-color: #ff00ff;
+            --background-color: #0d0d1a;
+            --text-color: #e0e0e0;
+            --glow-color: rgba(0, 255, 204, 0.5);
+            --highlight-bg: rgba(0, 255, 204, 0.15);
+        }
+
+        body {
+            background-color: var(--background-color);
+            color: var(--text-color);
+            font-family: 'Roboto Mono', monospace;
+            background-image:
+                repeating-linear-gradient(rgba(0,0,0,0.5) 0 1px, transparent 1px 100%),
+                repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.03) 0 1px, transparent 1px 100%);
+            background-size: 100% 2px, 2px 100%;
+            overflow-x: hidden;
+        }
+
+        .font-display {
+            font-family: 'VT323', monospace;
+        }
+        
+        .text-glow {
+            text-shadow: 0 0 5px var(--glow-color), 0 0 10px var(--glow-color), 0 0 15px var(--glow-color);
+        }
+
+        .glitch {
+            animation: glitch 1.5s linear infinite;
+        }
+
+        @keyframes glitch {
+            2%, 64% { transform: translate(2px, 0) skew(0deg); }
+            4%, 60% { transform: translate(-2px, 0) skew(0deg); }
+            62% { transform: translate(0, 0) skew(5deg); }
+        }
+
+        .glitch:before,
+        .glitch:after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--background-color);
+            overflow: hidden;
+            clip: rect(0, 900px, 0, 0);
+        }
+        
+        .glitch:before {
+            left: 2px;
+            text-shadow: -2px 0 var(--primary-color);
+            animation: noise-anim-1 2s linear infinite alternate-reverse;
+        }
+
+        .glitch:after {
+            left: -2px;
+            text-shadow: -2px 0 var(--secondary-color), 2px 2px var(--primary-color);
+            animation: noise-anim-2 3s linear infinite alternate-reverse;
+        }
+
+        @keyframes noise-anim-1 {
+            0% { clip-path: inset(10% 0 80% 0); }
+            /* ... more steps ... */
+            100% { clip-path: inset(50% 0 30% 0); }
+        }
+        
+        @keyframes noise-anim-2 {
+            0% { clip-path: inset(85% 0 5% 0); }
+            /* ... more steps ... */
+            100% { clip-path: inset(40% 0 55% 0); }
+        }
+
+        .crt-scanlines::before {
+            content: " ";
+            display: block;
+            position: fixed;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+            z-index: 2;
+            background-size: 100% 2px, 3px 100%;
+            pointer-events: none;
+            animation: flicker 0.15s infinite;
+        }
+
+        @keyframes flicker {
+            0% { opacity: 0.2; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+
+        .terminal-border {
+            border: 1px solid var(--primary-color);
+            box-shadow: 0 0 10px var(--glow-color) inset;
+            transition: all 0.3s ease;
+        }
+
+        .terminal-tab.active {
+            background-color: var(--primary-color);
+            color: var(--background-color);
+            text-shadow: none;
+        }
+
+        .highlight-text {
+            background-color: var(--highlight-bg);
+            border-left: 2px solid var(--primary-color);
+            padding-left: 4px;
+            transition: all 0.3s ease;
+        }
+        
+        #loader {
+            transition: opacity 1s ease-out;
+        }
+        
+        .typewriter {
+            overflow: hidden;
+            border-right: .15em solid var(--primary-color);
+            white-space: nowrap;
+            margin: 0 auto;
+            letter-spacing: .15em;
+            animation: typing 2.5s steps(30, end), blink-caret .75s step-end infinite;
+        }
+
+        @keyframes typing { from { width: 0 } to { width: 100% } }
+        @keyframes blink-caret { from, to { border-color: transparent } 50% { border-color: var(--primary-color); } }
+
+    </style>
+</head>
+<body class="min-h-screen p-4 sm:p-6 lg:p-8 crt-scanlines">
+    <!-- LOADER -->
+    <div id="loader" class="fixed inset-0 bg-background-color z-50 flex items-center justify-center">
+        <div class="text-center">
+            <h1 id="loader-text" class="font-display text-2xl sm:text-4xl text-primary-color text-glow"></h1>
+            <div class="w-full bg-gray-800 rounded-full h-2.5 mt-4">
+                <div id="loader-bar" class="bg-primary-color h-2.5 rounded-full" style="width: 0%"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main-content" class="opacity-0 transition-opacity duration-1000">
+        <header class="text-center mb-8">
+            <h1 class="font-display text-4xl sm:text-6xl md:text-7xl text-primary-color text-glow relative inline-block glitch" data-text="SYSTEM COMPROMISED">SYSTEM COMPROMISED</h1>
+            <p class="mt-2 text-lg text-gray-400">// ANALYZING MEDIA COVERAGE OF THE SEPTEMBER 2025 ELECTORAL CONTROVERSY //</p>
+        </header>
+
+        <main class="max-w-7xl mx-auto">
+            <!-- INTRODUCTION -->
+            <section id="introduction" class="terminal-border p-6 mb-8">
+                <h2 class="font-display text-3xl text-primary-color mb-4">> DECRYPTING TRANSMISSION...</h2>
+                <p class="text-gray-300 leading-relaxed">In September 2025, a political firestorm erupted. The Leader of the Opposition, Rahul Gandhi, alleged systematic "vote chori" (vote theft), targeting the Election Commission of India (ECI). Backed by so-called "100% proof" and threats of a "hydrogen bomb" revelation, this was more than politics—it was a direct assault on the integrity of India's democracy. This event occurred against a backdrop of documented democratic backsliding, with institutions like the ECI accused of weakened autonomy. This file analyzes the media's response, decoding the propaganda hidden in the signal.</p>
+            </section>
+
+            <!-- PROPAGANDA FILTERS -->
+            <section id="filters" class="mb-8">
+                <h2 class="font-display text-3xl text-primary-color text-glow mb-4 text-center">> PROPAGANDA FILTERS [SELECT TO ISOLATE]</h2>
+                <div class="flex flex-wrap justify-center gap-2 sm:gap-4">
+                    <button class="filter-btn terminal-border px-4 py-2 hover:bg-primary-color hover:text-background-color transition" data-filter="ownership">OWNERSHIP</button>
+                    <button class="filter-btn terminal-border px-4 py-2 hover:bg-primary-color hover:text-background-color transition" data-filter="advertising">ADVERTISING</button>
+                    <button class="filter-btn terminal-border px-4 py-2 hover:bg-primary-color hover:text-background-color transition" data-filter="sourcing">SOURCING</button>
+                    <button class="filter-btn terminal-border px-4 py-2 hover:bg-primary-color hover:text-background-color transition" data-filter="flak">FLAK</button>
+                    <button class="filter-btn terminal-border px-4 py-2 hover:bg-primary-color hover:text-background-color transition" data-filter="ideology">IDEOLOGY</button>
+                </div>
+            </section>
+            
+            <!-- MEDIA ANALYSIS SECTION -->
+            <section class="terminal-border">
+                <div class="flex flex-col md:flex-row">
+                    <!-- TABS FOR MEDIA OUTLETS -->
+                    <nav class="w-full md:w-48 border-b md:border-b-0 md:border-r border-primary-color/50 flex-shrink-0">
+                        <ul class="flex md:flex-col">
+                            <li class="flex-1"><button class="terminal-tab w-full font-display text-xl p-4 text-primary-color hover:bg-primary-color/20 active" data-target="toi">The_Times_of_India</button></li>
+                            <li class="flex-1"><button class="terminal-tab w-full font-display text-xl p-4 text-primary-color hover:bg-primary-color/20" data-target="ndtv">NDTV</button></li>
+                            <li class="flex-1"><button class="terminal-tab w-full font-display text-xl p-4 text-primary-color hover:bg-primary-color/20" data-target="the-hindu">The_Hindu</button></li>
+                            <li class="flex-1"><button class="terminal-tab w-full font-display text-xl p-4 text-primary-color hover:bg-primary-color/20" data-target="republic">Republic_TV</button></li>
+                            <li class="flex-1"><button class="terminal-tab w-full font-display text-xl p-4 text-primary-color hover:bg-primary-color/20" data-target="the-wire">The_Wire</button></li>
+                        </ul>
+                    </nav>
+                    
+                    <!-- CONTENT AREA -->
+                    <div class="p-6 w-full">
+                        <!-- The Times of India -->
+                        <div id="toi" class="tab-content space-y-4">
+                            <h3 class="font-display text-4xl text-secondary-color text-glow">The Times of India // The Propaganda of Centrism</h3>
+                            <p>TOI frames the institutional challenge as a mere political squabble, minimizing risk and maintaining the status quo.</p>
+                            <div><span data-filter-tag="ownership"><strong>[OWNERSHIP]:</strong> Owned by the Jain family's massive Bennett, Coleman & Co. Ltd. conglomerate, its primary goal is profitability across diverse ventures (real estate, film), not just journalism. This discourages reporting that might antagonize powerful corporate or political actors.</span></div>
+                            <div><span data-filter-tag="advertising"><strong>[ADVERTISING]:</strong> Heavily reliant on corporate and government advertising. The government is a top advertiser, and has historically used ad freezes to punish unfavorable coverage, creating powerful incentives for self-censorship.</span></div>
+                            <div><span data-filter-tag="sourcing"><strong>[SOURCING]:</strong> Employs a "view from nowhere" approach, quoting all official sides (Gandhi, ECI, BJP) to create an impression of balance. This method excludes deeper investigation and marginalizes independent voices and data.</span></div>
+                            <div><span data-filter-tag="flak"><strong>[FLAK]:</strong> Its centrist strategy is designed to avoid commercial and political flak. By framing the story as a "Vote chori row," it trivializes the crisis and avoids alienating any powerful entity, ensuring its own institutional survival.</span></div>
+                            <div><span data-filter-tag="ideology"><strong>[IDEOLOGY]:</strong> A centre-right, pro-business stance that treats politics as a competitive drama. By calling it a "row," it depoliticizes the allegations, steering the public away from the grave implications and towards viewing it as political theater.</span></div>
+                        </div>
+
+                        <!-- NDTV -->
+                        <div id="ndtv" class="tab-content space-y-4 hidden">
+                            <h3 class="font-display text-4xl text-secondary-color text-glow">NDTV // The Propaganda of Acquiescence</h3>
+                            <p>Post-takeover, NDTV's coverage reflects acquiescence to the establishment, neutralizing the opposition's claims by framing them as political theatrics.</p>
+                            <div><span data-filter-tag="ownership"><strong>[OWNERSHIP]:</strong> The 2022 acquisition by the Adani Group, a conglomerate with close ties to PM Modi, is the single most defining factor. It's structurally implausible for a channel owned by a pro-government entity to engage in adversarial journalism against it.</span></div>
+                            <div><span data-filter-tag="advertising"><strong>[ADVERTISING]:</strong> Previously punished with government ad withdrawals, the Adani takeover ensures a stable flow of revenue from government and aligned corporations, removing financial precarity and encouraging a pro-establishment line.</span></div>
+                            <div><span data-filter-tag="sourcing"><strong>[SOURCING]:</strong> Heavily privileged the official narrative from the ECI and BJP. Gandhi's claims were reported, but framed with diminishing language like "teaser" and "jab," positioning him as a provocateur, not a serious actor.</span></div>
+                            <div><span data-filter-tag="flak"><strong>[FLAK]:</strong> The years of government pressure and raids on the previous owners serve as a powerful cautionary tale. The Adani takeover is a structural solution to flak, aligning the channel's interests with the state to eliminate punitive action.</span></div>
+                            <div><span data-filter-tag="ideology"><strong>[IDEOLOGY]:</strong> Shifted from liberal-centrist to pro-establishment. The controversy was framed as a "meltdown" or a personality clash, delegitimizing the act of questioning powerful institutions as disruptive and destabilizing.</span></div>
+                        </div>
+
+                        <!-- The Hindu -->
+                        <div id="the-hindu" class="tab-content space-y-4 hidden">
+                            <h3 class="font-display text-4xl text-secondary-color text-glow">The Hindu // The Propaganda of Institutionalism</h3>
+                            <p>Characterized by a nuanced, institutionally-focused approach. It used the allegations as a lens to scrutinize systemic flaws in the electoral process.</p>
+                            <div><span data-filter-tag="ownership"><strong>[OWNERSHIP]:</strong> Owned by the Kasturi family trust, it's insulated from purely commercial or political pressures. Its mission is rooted in a 140-year legacy of journalistic credibility, prioritizing reputation over short-term gains.</span></div>
+                            <div><span data-filter-tag="advertising"><strong>[ADVERTISING]:</strong> While reliant on ads, its growing digital subscription base mitigates this dependence, creating accountability to readers who expect in-depth journalism and providing a buffer against government pressure.</span></div>
+                            <div><span data-filter-tag="sourcing"><strong>[SOURCING]:</strong> Went beyond the "he said, she said" dichotomy. It provided detailed accounts of the allegations and actively sought out former Chief Election Commissioners and legal experts for context and independent analysis.</span></div>
+                            <div><span data-filter-tag="flak"><strong>[FLAK]:</strong> Historically a target of flak (like ad freezes), its strong reputation as a credible, legacy institution provides a significant defense against more extreme forms of pressure.</span></div>
+                            <div><span data-filter-tag="ideology"><strong>[IDEOLOGY]:</strong> A centre-left, secular, and constitutionalist worldview. The story was framed as an institutional crisis, not partisan politics. Its editorial called to "Fix the flaws," using the controversy to call for systemic reforms.</span></div>
+                        </div>
+
+                        <!-- Republic TV -->
+                        <div id="republic" class="tab-content space-y-4 hidden">
+                            <h3 class="font-display text-4xl text-secondary-color text-glow">Republic TV // The Propaganda of Nationalism</h3>
+                            <p>Functioned as a propaganda apparatus for the ruling establishment, designed to delegitimize the opposition and reframe dissent as an anti-national act.</p>
+                            <div><span data-filter-tag="ownership"><strong>[OWNERSHIP]:</strong> Majority-owned by its editor-in-chief, Arnab Goswami, and initially funded by investors with direct links to the BJP. Its core business model is not journalism, but ideological advocacy.</span></div>
+                            <div><span data-filter-tag="advertising"><strong>[ADVERTISING]:</strong> Its staunchly pro-government stance makes it a highly attractive platform for government and corporate advertising, creating a self-reinforcing loop where nationalist content drives ratings and revenue.</span></div>
+                            <div><span data-filter-tag="sourcing"><strong>[SOURCING]:</strong> The primary "source" is often Arnab Goswami's own monologues. Opposition figures are not invited to present their views, but to be shouted down and delegitimized in a format that makes reasoned argument impossible.</span></div>
+                            <div><span data-filter-tag="flak"><strong>[FLAK]:</strong> It is a primary *generator* of flak against government opponents. It weaponizes the negative feedback it receives (lawsuits, bans), presenting them as proof of its courage and reinforcing its nationalist narrative.</span></div>
+                            <div><span data-filter-tag="ideology"><strong>[IDEOLOGY]:</strong> An aggressive form of right-wing nationalism that conflates the nation-state with the ruling party. Criticism of the government is treated as sedition. The controversy was presented as a "hoax" and "manufactured outrage."</span></div>
+                        </div>
+
+                        <!-- The Wire -->
+                        <div id="the-wire" class="tab-content space-y-4 hidden">
+                             <h3 class="font-display text-4xl text-secondary-color text-glow">The Wire // The Propaganda of Resistance</h3>
+                             <p>Operates outside traditional constraints, functioning as a form of counter-propaganda with a commitment to accountability and amplifying marginalized voices.</p>
+                             <div><span data-filter-tag="ownership"><strong>[OWNERSHIP]:</strong> Owned by the Foundation for Independent Journalism (FIJ), a non-profit run by journalists. It was explicitly created to be independent of the commercial and political pressures that afflict mainstream outlets.</span></div>
+                             <div><span data-filter-tag="advertising"><strong>[ADVERTISING]:</strong> Rejects the ad-driven model. It's funded by grants and reader donations, making its primary accountability to its audience, not advertisers or the government. It's immune to ad-based state control.</span></div>
+                             <div><span data-filter-tag="sourcing"><strong>[SOURCING]:</strong> Actively seeks out voices ignored by the establishment press. It provided a platform for deep dives into the technical details and gave prominence to the work of independent investigative journalists and civil society groups.</span></div>
+                             <div><span data-filter-tag="flak"><strong>[FLAK]:</strong> As a prominent critical voice, it is a constant recipient of severe flak, including defamation and sedition cases from the state. It transforms these attacks into a core part of its brand identity, validating its credentials and driving donations.</span></div>
+                             <div><span data-filter-tag="ideology"><strong>[IDEOLOGY]:</strong> Explicitly anti-establishment and pro-transparency. It framed the controversy as a fundamental threat to democracy, focusing on the ECI's lack of transparency and the broader pattern of institutional decay.</span></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+             <!-- CONCLUSION -->
+            <section id="conclusion" class="terminal-border p-6 mt-8">
+                <h2 class="font-display text-3xl text-primary-color mb-4">> FINAL REPORT: SYSTEM ANALYSIS COMPLETE</h2>
+                <p class="text-gray-300 leading-relaxed mb-4">The analysis reveals a deeply polarized media landscape where journalism often gives way to propaganda. The filters of Ownership, Advertising, Sourcing, Flak, and a "Nationalism vs. Anti-nationalism" Ideology systematically shape news to align with elite interests. Mainstream outlets create a spectacle, while independent media face severe threats for holding power to account.</p>
+                <p class="text-red-500 font-bold">> WARNING: This fracturing of the public sphere into separate realities makes democratic consensus impossible. It transforms politics into tribal conflict, undermining the deliberative processes essential for a functioning democracy. The system is under sustained threat.</p>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const loader = document.getElementById('loader');
+            const mainContent = document.getElementById('main-content');
+            const loaderText = document.getElementById('loader-text');
+            const loaderBar = document.getElementById('loader-bar');
+            
+            // --- Interactive Loader ---
+            const messages = [
+                "ESTABLISHING SECURE CONNECTION...",
+                "BYPASSING FIREWALLS...",
+                "ACCESSING ENCRYPTED DATA...",
+                "DECRYPTING MEDIA TRANSMISSIONS...",
+                "RENDERING ANALYSIS..."
+            ];
+            let currentMessage = 0;
+            let progress = 0;
+
+            function updateLoader() {
+                if (currentMessage < messages.length) {
+                    loaderText.textContent = messages[currentMessage];
+                    loaderText.classList.remove('typewriter');
+                    void loaderText.offsetWidth; // Trigger reflow
+                    loaderText.classList.add('typewriter');
+                    
+                    progress = (currentMessage + 1) * (100 / messages.length);
+                    loaderBar.style.width = `${progress}%`;
+                    
+                    currentMessage++;
+                    setTimeout(updateLoader, 2000);
+                } else {
+                    // Fade out loader, fade in content
+                    loader.style.opacity = '0';
+                    setTimeout(() => {
+                        loader.style.display = 'none';
+                        mainContent.style.opacity = '1';
+                    }, 1000);
+                }
+            }
+            updateLoader();
+
+            // --- Tab Functionality ---
+            const tabs = document.querySelectorAll('.terminal-tab');
+            const tabContents = document.querySelectorAll('.tab-content');
+
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    // Deactivate all tabs and hide all content
+                    tabs.forEach(t => t.classList.remove('active'));
+                    tabContents.forEach(c => c.classList.add('hidden'));
+
+                    // Activate clicked tab and show its content
+                    tab.classList.add('active');
+                    const targetId = tab.getAttribute('data-target');
+                    document.getElementById(targetId).classList.remove('hidden');
+                });
+            });
+
+            // --- Filter Functionality ---
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            let activeFilter = null;
+
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const filter = btn.getAttribute('data-filter');
+
+                    // If clicking the same filter again, deactivate it
+                    if (activeFilter === filter) {
+                        document.querySelectorAll('[data-filter-tag]').forEach(el => {
+                            el.classList.remove('highlight-text');
+                        });
+                        btn.classList.remove('active');
+                        activeFilter = null;
+                    } else {
+                        // Deactivate all buttons and highlights first
+                        filterBtns.forEach(b => b.classList.remove('active'));
+                        document.querySelectorAll('[data-filter-tag]').forEach(el => {
+                            el.classList.remove('highlight-text');
+                        });
+
+                        // Activate the new filter
+                        btn.classList.add('active');
+                        activeFilter = filter;
+                        document.querySelectorAll(`[data-filter-tag="${filter}"]`).forEach(el => {
+                            el.classList.add('highlight-text');
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+      </html>
